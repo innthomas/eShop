@@ -28,7 +28,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("eShop"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: navigateToAddScreen,
+          )
+        ],
+        title: Center(child: Text("eShop")),
         backgroundColor: Colors.black,
       ),
       backgroundColor: Colors.lime.shade700,
@@ -57,7 +63,9 @@ class _HomePageState extends State<HomePage> {
                             fit: BoxFit.cover,
                             image: snapshot.value['photoUrl'] == "empty"
                                 ? AssetImage('assets/logo.png')
-                                : NetworkImage(snapshot.value['photoUrl']),
+                                : NetworkImage(
+                                    snapshot.value['photoUrl'],
+                                  ),
                           ),
                         ),
                       ),
@@ -90,11 +98,6 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: navigateToAddScreen,
-        backgroundColor: Colors.black,
       ),
     );
   }
